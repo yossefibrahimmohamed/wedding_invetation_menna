@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menna & Farid — Wedding Invitation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sky: #d9e8f5;
+      --sky-mid: #c2d8ed;
+      --sky-light: #eaf3fb;
+      --navy: #3a5a7c;
+      --dusty-blue: #7a9ab8;
+      --blush: #d4a5a0;
+      --gold: #c9a84c;
+      --text-dark: #2c3e50;
+      --text-mid: #4a6278;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #e8f2fa 0%, #d4e8f4 40%, #e0edf7 70%, #f0e8f0 100%);
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ──── FLORAL DECORATION ──── */
+    .floral-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .floral-bg svg { position: absolute; }
+
+    /* ──── MAIN CARD ──── */
+    .card-wrapper {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 16px 60px;
+    }
+
+    .card {
+      background: linear-gradient(175deg, rgba(255,255,255,0.82) 0%, rgba(220,238,252,0.75) 50%, rgba(255,255,255,0.80) 100%);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 24px;
+      max-width: 520px;
+      width: 100%;
+      padding: 52px 44px 56px;
+      box-shadow:
+        0 8px 48px rgba(58,90,124,0.12),
+        0 2px 16px rgba(58,90,124,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+      position: relative;
+      overflow: hidden;
+      animation: cardIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(40px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0)   scale(1); }
+    }
+
+    /* Corner floral accents */
+    .card::before, .card::after {
+      content: '';
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.55;
+    }
+    .card::before {
+      top: -10px; left: -10px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='40' cy='40' r='22' fill='%237a9ab8' opacity='.35'/%3E%3Ccircle cx='70' cy='20' r='14' fill='%23d4a5a0' opacity='.4'/%3E%3Ccircle cx='20' cy='75' r='16' fill='%237a9ab8' opacity='.3'/%3E%3Ccircle cx='55' cy='65' r='10' fill='%23d4a5a0' opacity='.35'/%3E%3Ccircle cx='90' cy='45' r='8' fill='%237a9ab8' opacity='.25'/%3E%3Cpath d='M10,10 Q50,5 80,30 Q60,60 20,50 Z' fill='%237a9ab8' opacity='.12'/%3E%3C/svg%3E");
+    }
+    .card::after {
+      bottom: -10px; right: -10px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='160' cy='160' r='22' fill='%237a9ab8' opacity='.35'/%3E%3Ccircle cx='130' cy='180' r='14' fill='%23d4a5a0' opacity='.4'/%3E%3Ccircle cx='180' cy='125' r='16' fill='%237a9ab8' opacity='.3'/%3E%3Ccircle cx='145' cy='135' r='10' fill='%23d4a5a0' opacity='.35'/%3E%3Ccircle cx='110' cy='155' r='8' fill='%237a9ab8' opacity='.25'/%3E%3Cpath d='M190,190 Q150,195 120,170 Q140,140 180,150 Z' fill='%237a9ab8' opacity='.12'/%3E%3C/svg%3E");
+    }
+
+    /* ──── QURAN VERSE ──── */
+    .quran-section {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fadeUp 1s 0.3s both;
+    }
+    .quran-verse {
+      font-family: 'Amiri', serif;
+      font-size: clamp(17px, 4vw, 21px);
+      line-height: 2.0;
+      color: var(--navy);
+      direction: rtl;
+      letter-spacing: 0.02em;
+      padding: 0 8px;
+    }
+    .verse-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 16px auto 0;
+    }
+
+    /* ──── NAMES ──── */
+    .names-section {
+      text-align: center;
+      margin: 28px 0 20px;
+      animation: fadeUp 1s 0.5s both;
+    }
+    .name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(26px, 7vw, 36px);
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      display: block;
+      line-height: 1.2;
+    }
+    .name-amp {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 6vw, 38px);
+      font-style: italic;
+      color: var(--dusty-blue);
+      display: block;
+      margin: 6px 0;
+      line-height: 1;
+    }
+
+    /* ──── INVITATION TEXT ──── */
+    .invite-text {
+      text-align: center;
+      font-size: clamp(15px, 3.5vw, 17px);
+      color: var(--text-mid);
+      font-style: italic;
+      margin-bottom: 12px;
+      animation: fadeUp 1s 0.65s both;
+      letter-spacing: 0.01em;
+    }
+
+    /* ──── TIME BADGE ──── */
+    .time-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 16px auto 20px;
+      animation: fadeUp 1s 0.75s both;
+    }
+    .time-badge .icon { font-size: 20px; }
+    .time-badge .time-text {
+      font-size: clamp(16px, 4vw, 19px);
+      color: var(--text-mid);
+      letter-spacing: 0.05em;
+    }
+
+    /* ──── COUPLE ILLUSTRATION PLACEHOLDER ──── */
+    .couple-section {
+      position: relative;
+      margin: 24px -20px;
+      animation: fadeUp 1s 0.85s both;
+    }
+    .watercolor-wash {
+      background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(122,154,184,0.18) 0%, rgba(180,210,235,0.10) 70%, transparent 100%);
+      border-radius: 50%;
+      width: 260px;
+      height: 200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .couple-svg {
+      width: 180px;
+      height: 180px;
+      opacity: 0.92;
+    }
+
+    /* ──── DETAILS GRID ──── */
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+      animation: fadeUp 1s 1s both;
+    }
+    .detail-card {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(122,154,184,0.25);
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .detail-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(58,90,124,0.12);
+    }
+    .detail-icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .detail-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(14px, 3.5vw, 17px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+      text-decoration: underline;
+      text-decoration-color: rgba(122,154,184,0.5);
+      text-underline-offset: 3px;
+    }
+
+    /* ──── TAGLINE ──── */
+    .tagline {
+      text-align: center;
+      font-size: clamp(13px, 3.2vw, 15px);
+      color: var(--text-mid);
+      font-style: italic;
+      line-height: 1.7;
+      margin: 24px 0 0;
+      animation: fadeUp 1s 1.1s both;
+      padding: 0 12px;
+    }
+
+    /* ──── GOLD DIVIDER ──── */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 22px 0;
+    }
+    .gold-divider::before, .gold-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .gold-divider .diamond {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      border-radius: 1px;
+    }
+
+    /* ──── MAP BUTTON ──── */
+    .map-btn {
+      display: block;
+      margin: 28px auto 0;
+      padding: 14px 36px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--dusty-blue) 100%);
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(58,90,124,0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: fadeUp 1s 1.2s both;
+      text-align: center;
+      max-width: 260px;
+      width: 100%;
+    }
+    .map-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(58,90,124,0.4);
+    }
+    .map-btn:active { transform: translateY(0); }
+
+    /* ──── PETAL FLOATERS ──── */
+    .petal {
+      position: fixed;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0;
+      animation: petalFall linear infinite;
+    }
+    @keyframes petalFall {
+      0%   { opacity: 0;   transform: translateY(-20px) rotate(0deg); }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { opacity: 0;   transform: translateY(105vh) rotate(360deg); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ──── RESPONSIVE ──── */
+    @media (max-width: 480px) {
+      .card { padding: 40px 24px 44px; border-radius: 20px; }
+      .card-wrapper { padding: 20px 12px 40px; }
+      .details-grid { gap: 14px; }
+      .detail-card { padding: 16px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Ambient background florals -->
+<div class="floral-bg" aria-hidden="true">
+  <svg viewBox="0 0 400 400" style="top:-60px;left:-80px;width:320px;opacity:0.18">
+    <circle cx="80" cy="80" r="50" fill="#7a9ab8"/>
+    <circle cx="130" cy="40" r="32" fill="#d4a5a0"/>
+    <circle cx="40" cy="150" r="38" fill="#7a9ab8"/>
+    <circle cx="160" cy="110" r="22" fill="#d4a5a0"/>
+    <circle cx="200" cy="60" r="18" fill="#7a9ab8"/>
+  </svg>
+  <svg viewBox="0 0 400 400" style="bottom:-60px;right:-80px;width:320px;opacity:0.18">
+    <circle cx="320" cy="320" r="50" fill="#7a9ab8"/>
+    <circle cx="270" cy="360" r="32" fill="#d4a5a0"/>
+    <circle cx="360" cy="250" r="38" fill="#7a9ab8"/>
+    <circle cx="240" cy="290" r="22" fill="#d4a5a0"/>
+    <circle cx="200" cy="340" r="18" fill="#7a9ab8"/>
+  </svg>
+  <svg viewBox="0 0 300 300" style="top:40%;left:-40px;width:160px;opacity:0.12">
+    <circle cx="60" cy="150" r="40" fill="#d4a5a0"/>
+    <circle cx="120" cy="100" r="28" fill="#7a9ab8"/>
+  </svg>
+  <svg viewBox="0 0 300 300" style="top:30%;right:-40px;width:160px;opacity:0.12">
+    <circle cx="240" cy="150" r="40" fill="#7a9ab8"/>
+    <circle cx="180" cy="200" r="28" fill="#d4a5a0"/>
+  </svg>
+</div>
+
+<!-- Falling petals -->
+<div id="petals" aria-hidden="true"></div>
+
+<div class="card-wrapper">
+  <div class="card" role="main">
+
+    <!-- Quran Verse -->
+    <div class="quran-section">
+      <p class="quran-verse">
+        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا<br>
+        لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً<br>
+        إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+      </p>
+      <div class="verse-divider"></div>
+    </div>
+
+    <!-- Names -->
+    <div class="names-section">
+      <span class="name">Menna Ibrahim</span>
+      <span class="name-amp">&amp;</span>
+      <span class="name">Farid Adel</span>
+    </div>
+
+    <div class="gold-divider"><div class="diamond"></div></div>
+
+    <!-- Invitation text -->
+    <p class="invite-text">joyfully invite you to their wedding celebration</p>
+
+    <!-- Time -->
+    <div class="time-badge">
+      <span class="icon">🕓</span>
+      <span class="time-text">4:00 – 7:00 PM</span>
+    </div>
+
+    <!-- Couple illustration -->
+    <div class="couple-section">
+      <div class="watercolor-wash">
+        <svg class="couple-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Watercolor wash behind couple -->
+          <ellipse cx="100" cy="160" rx="75" ry="55" fill="#c2d8ed" opacity="0.35"/>
+
+          <!-- Bride body -->
+          <ellipse cx="82" cy="175" rx="28" ry="38" fill="#e8f0f8" opacity="0.9"/>
+          <!-- Bride dress detail -->
+          <path d="M58 165 Q65 195 82 210 Q99 195 106 165 Q100 180 82 182 Q64 180 58 165Z" fill="#d0e4f2" opacity="0.7"/>
+          <!-- Bride torso -->
+          <rect x="72" y="135" width="20" height="30" rx="8" fill="#e8d5c8"/>
+          <!-- Bride head -->
+          <circle cx="82" cy="120" r="18" fill="#e8d5c8"/>
+          <!-- Bride hair -->
+          <path d="M64 115 Q66 100 82 98 Q98 100 100 115 Q96 108 82 106 Q68 108 64 115Z" fill="#6b4226"/>
+          <path d="M64 115 Q60 125 62 135 Q68 130 72 135" fill="#6b4226"/>
+          <!-- Bride bouquet -->
+          <circle cx="106" cy="162" r="12" fill="#d4a5a0" opacity="0.8"/>
+          <circle cx="112" cy="158" r="8" fill="#c9a0a0" opacity="0.7"/>
+          <circle cx="100" cy="158" r="7" fill="#b8d4b0" opacity="0.8"/>
+          <!-- Bride arm -->
+          <path d="M100 148 Q112 155 106 162" stroke="#e8d5c8" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+          <!-- Groom body -->
+          <rect x="110" y="138" width="38" height="65" rx="10" fill="#7a9ab8" opacity="0.9"/>
+          <!-- Groom shirt/collar -->
+          <rect x="119" y="138" width="20" height="18" rx="4" fill="#f0f4f8"/>
+          <!-- Groom torso -->
+          <rect x="115" y="136" width="28" height="28" rx="8" fill="#8aacc4"/>
+          <!-- Groom head -->
+          <circle cx="129" cy="118" r="19" fill="#d4b896"/>
+          <!-- Groom hair -->
+          <path d="M110 112 Q112 96 129 94 Q146 96 148 112 Q144 103 129 102 Q114 103 110 112Z" fill="#3a2a1a"/>
+          <!-- Groom arm around bride -->
+          <path d="M112 148 Q96 152 94 162" stroke="#7a9ab8" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+          <!-- Decorative leaves -->
+          <ellipse cx="35" cy="190" rx="14" ry="6" fill="#9ab8a0" opacity="0.5" transform="rotate(-30 35 190)"/>
+          <ellipse cx="168" cy="185" rx="14" ry="6" fill="#9ab8a0" opacity="0.5" transform="rotate(25 168 185)"/>
+          <ellipse cx="22" cy="175" rx="10" ry="5" fill="#7a9ab8" opacity="0.4" transform="rotate(-50 22 175)"/>
+          <ellipse cx="178" cy="172" rx="10" ry="5" fill="#7a9ab8" opacity="0.4" transform="rotate(40 178 172)"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Date & Venue details -->
+    <div class="details-grid">
+      <div class="detail-card">
+        <span class="detail-icon">📅</span>
+        <div class="detail-label">
+          Saturday<br>June 6, 2026
+        </div>
+      </div>
+      <div class="detail-card">
+        <span class="detail-icon">📍</span>
+        <div class="detail-label">
+          Selina Hall<br>at Rocket Garden
+        </div>
+      </div>
+    </div>
+
+    <div class="gold-divider" style="margin:28px 0 20px;"><div class="diamond"></div></div>
+
+    <!-- Tagline -->
+    <p class="tagline">
+      Join us for an evening of love, laughter, and<br>
+      celebration as we begin our journey together.
+    </p>
+
+    <!-- Map button -->
+    <a
+      href="https://maps.google.com/?q=Selina+Hall+Rocket+Garden"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="map-btn"
+    >
+      📍 View Location
+    </a>
+
+  </div>
+</div>
+
+<script>
+  // Create falling petals
+  const petalColors = ['#d4a5a0', '#7a9ab8', '#b8cfe0', '#e8c5c0', '#c9d8e8'];
+  const container = document.getElementById('petals');
+
+  function createPetal() {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    const size = Math.random() * 10 + 5;
+    const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+    const left = Math.random() * 100;
+    const duration = Math.random() * 8 + 8;
+    const delay = Math.random() * 10;
+    petal.style.cssText = `
+      left:${left}vw;
+      width:${size}px;
+      height:${size * 0.7}px;
+      background:${color};
+      border-radius:50% 50% 50% 0;
+      animation-duration:${duration}s;
+      animation-delay:${delay}s;
+      top:0;
+    `;
+    container.appendChild(petal);
+    setTimeout(() => petal.remove(), (duration + delay) * 1000);
+  }
+
+  // Spawn petals periodically
+  for (let i = 0; i < 6; i++) setTimeout(createPetal, i * 800);
+  setInterval(createPetal, 1800);
+
+  // Add subtle parallax on mouse/touch move (desktop only)
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', e => {
+      const cx = e.clientX / window.innerWidth - 0.5;
+      const cy = e.clientY / window.innerHeight - 0.5;
+      document.querySelectorAll('.floral-bg svg').forEach((el, i) => {
+        const d = (i % 2 === 0 ? 1 : -1) * (i + 1) * 4;
+        el.style.transform = `translate(${cx * d}px, ${cy * d}px)`;
+      });
+    });
+  }
+</script>
+</body>
+</html>
